@@ -32,6 +32,14 @@ config/master.key
 /.bundle
 /vendor/bundle
 
+# Ignore pidfiles, but keep the directory.
+/tmp/pids/*
+!/tmp/pids/
+!/tmp/pids/.keep
+
+# Ignore master key for decrypting credentials and more.
+/config/master.key
+
 # these should all be checked in to normalize the environment:
 # Gemfile.lock, .ruby-version, .ruby-gemset
 
