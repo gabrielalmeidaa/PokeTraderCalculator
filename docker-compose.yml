@@ -6,7 +6,15 @@ version: "3.3"
 # service ("web") and our PostgreSQL database instance
 # is another service ("database").
 services:
-
+  poke_trader_calculator:
+    build:
+      context: .
+      dockerfile: ./Dockerfile
+    volumes:
+      - ./.:/var/www/poke_trader_calculator
+      - "/etc/localtime:/etc/localtime:ro"
+    stdin_open: true
+    
   db:
     # instead of building it from zero we'll use an existent image (see docker hub)
     image: mongo
