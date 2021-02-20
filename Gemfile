@@ -27,7 +27,7 @@ group :development, :test do
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
   gem 'rspec-rails', '~> 4.0.2' 
   gem 'mongoid-rspec', '~>4.1.0'
-  gem 'database_cleaner-mongoid'
+  gem 'database_cleaner-mongoid', '~> 2.0.1'
   gem 'factory_bot_rails'
   gem 'faker', :git => 'https://github.com/faker-ruby/faker.git', :branch => 'master'
 end
