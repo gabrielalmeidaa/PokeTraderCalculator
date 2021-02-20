@@ -3,13 +3,13 @@
 require 'rails_helper'
 
 RSpec.describe TradeOffer do
-  let(:pokemons){
+  let(:pokemons)  do
     [
       build(:pokemon, pokedex_id: 1, name: 'charizard', base_experience: 10),
       build(:pokemon, pokedex_id: 2, name: 'mewtwo', base_experience: 20),
       build(:pokemon, pokedex_id: 3, name: 'ghastly', base_experience: 100)
     ]
-  }
+  end
   let(:subject) { described_class.new(offer_total_experience: 0, pokemons: pokemons) }
 
   it 'is valid with valid attributes' do
@@ -30,5 +30,4 @@ RSpec.describe TradeOffer do
     subject.save
     expect(subject.offer_total_experience).to eq(130)
   end
-
 end

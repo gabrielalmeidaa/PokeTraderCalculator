@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'rails_helper'
 
 RSpec.describe Pokemon do
@@ -25,7 +27,6 @@ RSpec.describe Pokemon do
   it 'does not save new pokemon with same pokedex_id' do
     subject.save
     pokemon_with_same_id = build(:pokemon, pokedex_id: 1)
-    expect(pokemon_with_same_id).to_not be_valid  
+    expect(pokemon_with_same_id).to_not be_valid
   end
-
 end
