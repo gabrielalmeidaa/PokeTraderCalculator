@@ -5,9 +5,9 @@ require 'rails_helper'
 RSpec.describe TradeOffer do
   let(:pokemons){
     [
-      create(:pokemon, pokedex_id: 1, name: 'charizard', base_experience: 10),
-      create(:pokemon, pokedex_id: 2, name: 'mewtwo', base_experience: 20),
-      create(:pokemon, pokedex_id: 3, name: 'ghastly', base_experience: 100)
+      build(:pokemon, pokedex_id: 1, name: 'charizard', base_experience: 10),
+      build(:pokemon, pokedex_id: 2, name: 'mewtwo', base_experience: 20),
+      build(:pokemon, pokedex_id: 3, name: 'ghastly', base_experience: 100)
     ]
   }
   let(:subject) { described_class.new(offer_total_experience: 0, pokemons: pokemons) }
