@@ -9,8 +9,10 @@ require 'rspec/rails'
 require 'mongoid-rspec'
 require 'support/factory_bot'
 
-DatabaseCleaner[:mongoid].strategy = :deletion
-
 RSpec.configure do |config|
+  DatabaseCleaner[:mongoid].strategy = :deletion
   config.include Mongoid::Matchers
+  config.after(:each) do
+    DatabaseCleaner[:mongoid].clean
+  end
 end
