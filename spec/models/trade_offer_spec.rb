@@ -22,7 +22,7 @@ RSpec.describe TradeOffer do
   end
 
   it 'is not valid with not Pokemon type object on pokemon array' do
-    subject.pokemons.append(build(:trade_offer))
+    subject.pokemons = [build(:trade_offer, pokemons: pokemons)]
     expect(subject).not_to be_valid
   end
 
