@@ -9,6 +9,8 @@ gem 'rails', '~> 6.0.3', '>= 6.0.3.5'
 gem 'puma', '~> 4.1'
 gem 'mongoid', '~> 7.0.2'
 gem 'rubocop', '~> 1.10', require: false
+gem 'poke-api-v2'
+gem 'irb'
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
 # gem 'jbuilder', '~> 2.7'
 # Use Active Model has_secure_password
@@ -23,6 +25,11 @@ gem 'bootsnap', '>= 1.4.2', require: false
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
+  gem 'rspec-rails', '~> 4.0.2' 
+  gem 'mongoid-rspec', '~>4.1.0'
+  gem 'database_cleaner-mongoid'
+  gem 'factory_bot_rails'
+  gem 'faker', :git => 'https://github.com/faker-ruby/faker.git', :branch => 'master'
 end
 
 group :development do
