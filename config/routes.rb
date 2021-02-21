@@ -3,7 +3,7 @@ Rails.application.routes.draw do
 
   scope '/trades' do
     get '/new', to: 'trades#new'
-    get '/:id', to: 'trades#show'
+    get '/historic', to: 'trades#historic'
     post '/create', to: 'trades#create'
   end
 
