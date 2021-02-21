@@ -20,7 +20,7 @@ class TradeOffer
   def pokemon_offer_list_does_not_surpass_pokemon_limit
     return unless pokemons.length > POKEMON_PER_TRADE_LIMIT
 
-    errors.add(:pokemons, 'Pokemon offer list should not be greater than #{POKEMON_PER_TRADE_LIMIT}')
+    errors.add(:pokemons, "Pokemon offer list should not be greater than #{POKEMON_PER_TRADE_LIMIT}")
   end
 
   def pokemon_offer_list_not_empty
