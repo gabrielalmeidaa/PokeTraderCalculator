@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  root "pages#home"
+  root "trades#new"
 
   scope '/trades' do
     get '/new', to: 'trades#new'

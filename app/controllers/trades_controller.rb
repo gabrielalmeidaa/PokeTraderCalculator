@@ -20,7 +20,7 @@ class TradesController < ApplicationController
 
   def parse_trade_offers_from_params
     trade_offers = []
-    trade_params.fetch('trade_offers').each do |_, pokemon_id_list|
+    trade_params.fetch(:trade_offers).each do |_, pokemon_id_list|
       pokemon_ids = pokemon_id_list.select(&:present?)
       trade_offers.append(TradeOffer.new(pokemons: pokemon_ids.map { |id| Pokemon.get_by_id(id.to_i) }))
     end
