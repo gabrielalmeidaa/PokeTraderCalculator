@@ -10,26 +10,43 @@
   </head>
 
   <body>
-      <div id="app">
-        <div class="main-wrapper">
-          <nav class="navbar navbar-expand-lg bg-primary no-left">
-            <a class="navbar-brand" href="#">POKÉMON TRADER APP</a>
-            <div class="navbar-collapse" id="navbarNav">
-              <ul class="navbar-nav">
-                <li class="nav-item">
-                  <a class="nav-link" href="/trades/new">Create Trade</a>
-                </li>
-                <li class="nav-item">
-                  <a class="nav-link" href="/trades/historic">Trade History</a>
-                </li>
-                <li class="nav-item">
-                  <a class="nav-link" href="#">Import Pokemon</a>
-                </li>
-              </ul>
-            </div>
-          </nav>
-        </div>
+    <div id="app">
+      <div class="main-wrapper">
+        <nav class="navbar navbar-expand-lg bg-primary no-left">
+          <a class="navbar-brand" href="#">POKÉMON TRADER APP</a>
+          <div class="navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav">
+              <li class="nav-item">
+                <a class="nav-link" href="/trades/new">Create Trade</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="/trades/historic">Trade History</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#">Import Pokemon</a>
+              </li>
+            </ul>
+          </div>
+        </nav>
       </div>
-    <%= yield %>
+    </div>
+    <div class="page-container">
+      <div class="content">
+        <% flash.each do |type, msg| %>
+          <% if type == 'success' %>
+            <div class="alert alert-success">
+              <div class="alert-title">Success</div>
+              <%= msg %>
+            </div>
+          <% elsif type == 'error' %>
+            <div class="alert alert-warning">
+              <div class="alert-title">Error</div>
+              <%= msg %>
+            </div>
+          <% end %>
+        <% end %>
+        <%= yield %>
+      </div>
+    </div>
   </body>
 </html>

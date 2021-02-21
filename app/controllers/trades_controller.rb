@@ -10,9 +10,11 @@ class TradesController < ApplicationController
     trade_offers = parse_trade_offers_from_params
     @trade = Trade.new(trade_offers: trade_offers)
     if @trade.save
-      redirect_to :new, notice: "Trade was successfully created."
+      flash[:success] = "Trade was successfully created."
+      redirect_to :new
     else
-      redirect_to :new, status: :unprocessable_entity
+      flash[:error] = "Could not create Trade."
+      redirect_to :new
     end
   end
 

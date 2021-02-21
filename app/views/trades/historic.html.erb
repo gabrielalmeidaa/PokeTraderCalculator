@@ -1,31 +1,27 @@
-<div class="page-container">
-  <div class="content">
-    <h1>Trade History</h1>
-    <div class="row">
-      <% @trades.each_with_index do  |trade, index| %>
-        <div class="col-12 col-md-6 col-lg-6">
-          <% if trade.fair_trade? %>
-            <div class="card card-success">
-              <div class="card-header">
-                <h3>Trade #<%=index%> - Fair</h3>
-              </div>
-              <div class="card-body">
-                <%= render partial: 'trade', locals: {trade: trade} %>
-              </div>
-            </div>
-          <% else %>
-            <div class="card card-warning">
-              <div class="card-header">
-                <h3>Trade #<%=index%> - Unfair</h3>
-              </div>
-              <div class="card-body">
-                  <%= render partial: 'trade', locals: {trade: trade, index: index} %>
-              </div>
-            </div>
-          <% end %>
+
+<h1>Trade History</h1>
+<div class="row">
+  <% @trades.each_with_index do  |trade, index| %>
+    <div class="col-12 col-md-6 col-lg-6">
+      <% if trade.fair_trade? %>
+        <div class="card card-success">
+          <div class="card-header">
+            <h3>Trade #<%=index%> - Fair</h3>
+          </div>
+          <div class="card-body">
+            <%= render partial: 'trade', locals: {trade: trade} %>
+          </div>
+        </div>
+      <% else %>
+        <div class="card card-warning">
+          <div class="card-header">
+            <h3>Trade #<%=index%> - Unfair</h3>
+          </div>
+          <div class="card-body">
+              <%= render partial: 'trade', locals: {trade: trade, index: index} %>
+          </div>
         </div>
       <% end %>
     </div>
-
-  </div>
+      <% end %>
 </div>
