@@ -40,7 +40,7 @@ RSpec.describe Trade do
         create(:trade_offer, pokemons: [pokemons[2], pokemons[0]])
       ]
       subject.trade_offers = fair_trade_offers
-      expect(subject.fair_trade?).to be false
+      expect(subject.fair_trade?).to be true
     end
   end
 end

@@ -9,6 +9,7 @@ class Trade
   field :created_at, type: Time, default: Time.now
   embeds_many :trade_offers
 
+  validates_associated :trade_offers
   validate :allowed_trade_offer_quantity
 
   def fair_trade?
