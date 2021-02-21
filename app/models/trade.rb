@@ -4,7 +4,7 @@ class Trade
   include Mongoid::Document
   MININUM_OFFERS_ON_TRADE = 2
   MAXIMUM_OFFERS_ON_TRADE = 2
-  TRADE_FAIRNESS_FACTOR = 0.05
+  TRADE_FAIRNESS_FACTOR = 0.1
 
   field :created_at, type: Time, default: Time.now
   embeds_many :trade_offers

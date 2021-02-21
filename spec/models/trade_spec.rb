@@ -36,10 +36,10 @@ RSpec.describe Trade do
 
     it 'returns true on fair trade' do
       fair_trade_offers = [
-        create(:trade_offer, pokemons: [pokemons[2], pokemons[1]]),
-        create(:trade_offer, pokemons: [pokemons[2], pokemons[0]])
+        build(:trade_offer, pokemons: [pokemons[2], pokemons[1]]),
+        build(:trade_offer, pokemons: [pokemons[2], pokemons[0]])
       ]
-      subject.trade_offers = fair_trade_offers
+      subject.update_attributes(trade_offers: fair_trade_offers)
       expect(subject.fair_trade?).to be true
     end
   end

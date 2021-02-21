@@ -4,7 +4,7 @@ class TradeOffer
   include Mongoid::Document
   has_and_belongs_to_many :pokemons, inverse_of: nil
 
-  validates_associated :pokemons
+  embeds_many :pokemons
   validate :pokemon_offer_list_not_empty
   validate :only_pokemon_instances_on_pokemon_array
 
