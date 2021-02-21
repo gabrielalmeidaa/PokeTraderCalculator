@@ -5,9 +5,7 @@
 require("@rails/ujs").start()
 require("turbolinks").start()
 require("channels")
-// require("stisla")
-// require("scripts")
-// require("custom")
+require("select2")
 
 
 // Uncomment to copy all static images under ../images to the output folder and reference
