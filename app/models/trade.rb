@@ -11,6 +11,7 @@ class Trade
 
   validates_associated :trade_offers
   validate :allowed_trade_offer_quantity
+  scope :chronologically_ordered, -> { reorder(created_at: :asc) }
 
   def fair_trade?
     trade_offer_exp_list = trade_offers.map(&:offer_total_experience)

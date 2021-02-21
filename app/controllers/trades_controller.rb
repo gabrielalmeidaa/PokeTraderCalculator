@@ -25,6 +25,10 @@ class TradesController < ApplicationController
     trade_offers
   end
 
+  def historic
+    @trades = Trade.all.chronologically_ordered
+  end
+
   private
 
   # Only allow a trusted parameter "white list" through.

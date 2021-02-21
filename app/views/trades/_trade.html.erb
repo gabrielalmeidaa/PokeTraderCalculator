@@ -1,0 +1,36 @@
+<% @player_one_offer= trade.trade_offers[0] %>
+<% @player_two_offer= trade.trade_offers[1] %>
+
+<div class="row">
+  <div class="half">
+    <h5>Player 1 - Offer</h5>
+    <ul class="list-group">
+      <% @player_one_offer.pokemons.each do |pokemon| %>
+        <li class="list-group-item d-flex justify-content-between align-items-center">
+          <%= pokemon.name %>
+          <span class="badge badge-primary badge-pill"><%=pokemon.base_experience %></span>
+        </li>
+      <% end %>
+    </ul>
+  </div>
+  <div class="half">
+    <h5>Player 2 - Offer</h5>
+    <ul class="list-group">
+      <% @player_two_offer.pokemons.each do |pokemon| %>
+        <li class="list-group-item d-flex justify-content-between align-items-center">
+          <%= pokemon.name %>
+          <span class="badge badge-primary badge-pill"><%=pokemon.base_experience %></span>
+        </li>
+      <% end %>
+    </ul>
+  </div>
+</div>
+<br>
+<div class="row">
+  <div class="half">
+    <b>Total Experience: <%=@player_one_offer.offer_total_experience %></b>
+  </div>
+  <div class="half">
+    <b>Total Experience: <%=@player_two_offer.offer_total_experience %></b>
+  </div>
+</div>
