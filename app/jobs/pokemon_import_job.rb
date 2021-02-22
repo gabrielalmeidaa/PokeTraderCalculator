@@ -30,12 +30,14 @@ class PokemonImportJob < ActiveJob::Base
   end
 
   def perform(name = nil, id = nil)
+    puts "Starting pokemon import process..."
     pokemon_request_identifier = name or id
     if pokemon_request_identifier
       import_pokemon(pokemon_request_identifier)
     else
       bulk_pokemon_import
     end
+    puts "Done!"
   end
 
 end
