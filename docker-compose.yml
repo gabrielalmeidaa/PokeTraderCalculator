@@ -10,11 +10,30 @@ services:
     build:
       context: .
       dockerfile: ./Dockerfile
+    command: bash -c "rm -f tmp/pids/server.pid && bundle exec rails s -p 3000 -b '0.0.0.0'"
+    ports:
+      - "3000:3000"
+    depends_on:
+      - db
     volumes:
       - ./.:/var/www/poke_trader_calculator
       - "/etc/localtime:/etc/localtime:ro"
-    stdin_open: true
-    
+      - .:/code:cached
+    environment:
+      RAILS_ENV: development
+
+  tests:
+    build:
+      context: .
+      dockerfile: ./Dockerfile
+    command: bash -c "bundle exec rspec"
+    ports:
+      - "3000:3000"
+    depends_on:
+      - db
+    environment:
+      RAILS_ENV: test
+
   db:
     # instead of building it from zero we'll use an existent image (see docker hub)
     image: mongo
@@ -23,32 +42,5 @@ services:
     ports:
       - "27017:27017"
 
-  web:
-    # The root directory from which we're building.
-    build: .
-
-    # This makes it so any code changes inside the project
-    # directory get synced with Docker. Without this line,
-    # we'd have to restart the container every time we
-    # changed a file.
-    volumes:
-      - .:/code:cached
-
-    # The command to be run when we run "docker-compose up".
-    command: bash -c "rm -f tmp/pids/server.pid && bundle exec rails s -p 3000 -b '0.0.0.0'"
-
-    # Expose port 3000.
-    ports:
-      - "3000:3000"
-
-    depends_on:
-      - db
-
-    # Specify the values of the environment variables
-    # used in this container.
-    environment:
-      RAILS_ENV: development
-
-# Declare the volumes that our application uses.
 volumes:
   db_data:
