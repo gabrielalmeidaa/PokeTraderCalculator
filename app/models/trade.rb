@@ -13,7 +13,7 @@ class Trade
   validate :allowed_trade_offer_quantity
   scope :chronologically_ordered, -> { reorder(created_at: :asc) }
 
-  def fair_trade?
+  def fair?
     trade_offer_exp_list = trade_offers.map(&:offer_total_experience)
     highest_exp_from_trade = trade_offer_exp_list.max
     maximum_allowed_difference = highest_exp_from_trade * TRADE_FAIRNESS_FACTOR

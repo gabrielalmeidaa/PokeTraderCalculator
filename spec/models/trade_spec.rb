@@ -28,10 +28,10 @@ RSpec.describe Trade do
     expect(subject).not_to be_valid
   end
 
-  describe '.fair_trade?' do
+  describe '.fair?' do
     it 'returns false on unfair trade' do
       trade_offers.map(&:save)
-      expect(subject.fair_trade?).to be false
+      expect(subject.fair?).to be false
     end
 
     it 'returns true on fair trade' do
@@ -40,7 +40,7 @@ RSpec.describe Trade do
         build(:trade_offer, pokemons: [pokemons[2], pokemons[0]])
       ]
       subject.update_attributes(trade_offers: fair_trade_offers)
-      expect(subject.fair_trade?).to be true
+      expect(subject.fair?).to be true
     end
   end
 end

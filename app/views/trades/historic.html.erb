@@ -3,7 +3,7 @@
 <div class="row">
   <% @trades.each_with_index do  |trade, index| %>
     <div class="col-12 col-md-6 col-lg-6">
-      <% if trade.fair_trade? %>
+      <% if trade.fair? %>
         <div class="card card-success">
           <div class="card-header">
             <h3>Trade #<%=index%> - Fair</h3>
