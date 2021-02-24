@@ -4,14 +4,12 @@ class TradeOffer
   include Mongoid::Document
   POKEMON_PER_TRADE_LIMIT = 6
 
-  has_and_belongs_to_many :pokemons, inverse_of: nil
-
   embeds_many :pokemons
   validate :pokemon_offer_list_not_empty
   validate :pokemon_offer_list_does_not_surpass_pokemon_limit
   validate :only_pokemon_instances_on_pokemon_array
 
-  def build_from_pokemon_ids(pokemon_ids)
+  def self.build_from_pokemon_ids(pokemon_ids)
     TradeOffer.new(pokemons: pokemon_ids.map { |id| Pokemon.get_by_id(id.to_i) })
   end
 
