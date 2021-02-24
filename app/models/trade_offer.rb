@@ -11,6 +11,10 @@ class TradeOffer
   validate :pokemon_offer_list_does_not_surpass_pokemon_limit
   validate :only_pokemon_instances_on_pokemon_array
 
+  def build_from_pokemon_ids(pokemon_ids)
+    TradeOffer.new(pokemons: pokemon_ids.map { |id| Pokemon.get_by_id(id.to_i) })
+  end
+
   def offer_total_experience
     pokemons.reduce(0) { |total_exp, pokemon| total_exp + pokemon.base_experience }
   end

@@ -10,18 +10,17 @@ class TradesController < ApplicationController
     @trade = Trade.new(trade_offers: trade_offers)
     if @trade.save
       flash[:success] = 'Trade was successfully created.'
-      redirect_to :new
     else
       flash[:error] = 'Could not create Trade.'
-      redirect_to :new
     end
+    redirect_to :new
   end
 
   def parse_trade_offers_from_params
     trade_offers = []
     trade_params.fetch(:trade_offers).each do |_, pokemon_id_list|
       pokemon_ids = pokemon_id_list.select(&:present?)
-      trade_offers.append(TradeOffer.new(pokemons: pokemon_ids.map { |id| Pokemon.get_by_id(id.to_i) }))
+      trade_offers.append(TradeOffer.build_from_pokemon_ids(pokemon_ids))
     end
     trade_offers
   end
