@@ -15,12 +15,17 @@ After, run this command to populate the database with pokemons.
 $ sudo docker-compose run poke_trader_calculator bash pokemon_import_script.sh
 ```
 
+If any of those commands raises an exception about yarn packages, simply run
+```
+$ sudo docker-compose run poke_trader_calculator yarn install --check-files
+```
+
 To run the tests:
 ```
 $ sudo docker-compose run tests rspec
 ```
 
-And then start the poke trader calculator service. The rails server will be available at `localhost:3000` 
+And then start the poke trader calculator service. The rails server will be available at `localhost:3000`
 ```
 $ sudo docker-compose up poke_trader_calculator
 ```
