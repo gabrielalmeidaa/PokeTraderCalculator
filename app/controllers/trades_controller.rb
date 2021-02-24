@@ -1,7 +1,6 @@
 # frozen_string_literal: true
 
 class TradesController < ApplicationController
-
   def new
     @pokemon_list = Pokemon.all
   end
@@ -10,10 +9,10 @@ class TradesController < ApplicationController
     trade_offers = parse_trade_offers_from_params
     @trade = Trade.new(trade_offers: trade_offers)
     if @trade.save
-      flash[:success] = "Trade was successfully created."
+      flash[:success] = 'Trade was successfully created.'
       redirect_to :new
     else
-      flash[:error] = "Could not create Trade."
+      flash[:error] = 'Could not create Trade.'
       redirect_to :new
     end
   end
