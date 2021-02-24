@@ -9,15 +9,17 @@ The first step is to build docker containers. On the root directory of this proj
 $ sudo docker-compose build
 ```
 
-After, run this command to populate the database with pokemons.
-(This may take some time.)
-```
-$ sudo docker-compose run poke_trader_calculator bash pokemon_import_script.sh
-```
+To install dependencies:
 
-If any of those commands raises an exception about yarn packages, simply run
 ```
 $ sudo docker-compose run poke_trader_calculator yarn install --check-files
+```
+
+After, run this command to populate the database with pokemons.
+(This may take some time.)
+
+```
+$ sudo docker-compose run poke_trader_calculator bash pokemon_import_script.sh
 ```
 
 To run the tests:
