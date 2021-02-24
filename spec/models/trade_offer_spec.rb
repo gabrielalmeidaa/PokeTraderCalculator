@@ -5,9 +5,9 @@ require 'rails_helper'
 RSpec.describe TradeOffer do
   let(:pokemons)  do
     [
-      create(:pokemon, pokedex_id: 1, name: 'charizard', base_experience: 10),
-      create(:pokemon, pokedex_id: 2, name: 'mewtwo', base_experience: 20),
-      create(:pokemon, pokedex_id: 3, name: 'ghastly', base_experience: 100)
+      create(:pokemon, _id:1, pokedex_id: 1, name: 'charizard', base_experience: 10),
+      create(:pokemon, _id:2, pokedex_id: 2, name: 'mewtwo', base_experience: 20),
+      create(:pokemon, _id:3, pokedex_id: 3, name: 'ghastly', base_experience: 100)
     ]
   end
 
@@ -44,4 +44,13 @@ RSpec.describe TradeOffer do
       expect(subject.offer_total_experience).to eq(230)
     end
   end
+
+  describe ".build_from_pokemon_ids" do
+    it 'creates trade offer with the correct pokemons' do
+      pokemons.map(&:save)
+      trade_offer = TradeOffer.build_from_pokemon_ids([1,2,3])
+      expect(trade_offer.pokemons).to match_array(pokemons)
+    end
+  end
+  
 end
